@@ -5,6 +5,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^22.14.0",
     "@types/three": "^0.175.0",
     "typescript": "^5.8.3"
   },
