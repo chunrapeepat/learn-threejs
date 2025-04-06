@@ -4,18 +4,13 @@ import {
   createCamera,
   createRenderer,
   handleWindowResize,
-} from "../../utils/common";
+} from "../utils/common";
 
 // Create basic elements
 const scene = createScene();
 const camera = createCamera();
 const renderer = createRenderer();
-document
-  .getElementById("experiment-container")
-  ?.appendChild(renderer.domElement);
-
-// Position the camera
-camera.position.z = 5;
+document.body.appendChild(renderer.domElement);
 
 // Create a cube
 const geometry = new THREE.BoxGeometry();
