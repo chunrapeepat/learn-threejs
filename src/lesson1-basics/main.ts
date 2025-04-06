@@ -14,9 +14,28 @@ document.body.appendChild(renderer.domElement);
 
 // Create a cube
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshBasicMaterial({
+  color: 0x00ff00,
+  wireframe: true,
+});
 const cube = new THREE.Mesh(geometry, material);
+cube.position.x = -1;
+cube.position.y = 1;
 scene.add(cube);
+
+// cube.position.normalize();
+
+console.log("cube.position.length()", cube.position.length());
+console.log(
+  "cube.position.distanceTo(new THREE.Vector3(0, 0, 0))",
+  cube.position.distanceTo(new THREE.Vector3(0, 0, 0))
+);
+
+// axis helper
+const axisHelper = new THREE.AxesHelper();
+scene.add(axisHelper);
+
+camera.lookAt(cube.position);
 
 // Animation loop
 function animate(): void {
