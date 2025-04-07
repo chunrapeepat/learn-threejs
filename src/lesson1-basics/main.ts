@@ -14,7 +14,7 @@ const renderer = createRenderer();
 document.body.appendChild(renderer.domElement);
 
 // Create a cube
-const geometry = new THREE.BoxGeometry();
+const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
 const material = new THREE.MeshBasicMaterial({
   color: 0x00ff00,
   wireframe: true,
@@ -23,6 +23,16 @@ const cube = new THREE.Mesh(geometry, material);
 cube.position.x = -1;
 cube.position.y = 1;
 scene.add(cube);
+
+// create triangle from scratch
+const positionsArray = new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0]);
+// 3 is because we send the position; e.g.g uv = 2 or size = 1
+const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3);
+const triangleGeometry = new THREE.BufferGeometry();
+triangleGeometry.setAttribute("position", positionsAttribute);
+const triangleMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const triangle = new THREE.Mesh(triangleGeometry, triangleMaterial);
+scene.add(triangle);
 
 // cube.position.normalize();
 
