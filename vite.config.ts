@@ -12,4 +12,12 @@ export default defineConfig({
     },
   },
   appType: "mpa",
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        lesson1: path.resolve(__dirname, "src/lesson1-basics/index.html"),
+      },
+    },
+  },
 });

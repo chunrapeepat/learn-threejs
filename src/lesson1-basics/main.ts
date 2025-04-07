@@ -38,10 +38,20 @@ scene.add(axisHelper);
 camera.lookAt(cube.position);
 
 // Animation loop
+let time = performance.now();
+// const clock = new THREE.Clock();
 function animate(): void {
   requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+
+  //Time (16.67 for 60fps)
+  const currentTime = performance.now();
+  const deltaTime = currentTime - time;
+  time = currentTime;
+
+  // alternative: clock.elapsedTime
+
+  cube.rotation.x += deltaTime * 0.001;
+  cube.rotation.y += deltaTime * 0.001;
   renderer.render(scene, camera);
 }
 
