@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import {
   createScene,
   createCamera,
@@ -37,9 +38,13 @@ scene.add(axisHelper);
 
 camera.lookAt(cube.position);
 
+// controls
+const controls = new OrbitControls(camera, renderer.domElement);
+
 // Animation loop
 let time = performance.now();
 // const clock = new THREE.Clock();
+controls.update();
 function animate(): void {
   requestAnimationFrame(animate);
 
