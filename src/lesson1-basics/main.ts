@@ -6,6 +6,9 @@ import {
   createRenderer,
   handleWindowResize,
 } from "../utils/common";
+import { GUI } from "lil-gui";
+
+const gui = new GUI();
 
 // Create basic elements
 const scene = createScene();
@@ -50,6 +53,14 @@ camera.lookAt(cube.position);
 
 // controls
 const controls = new OrbitControls(camera, renderer.domElement);
+const triangleFolder = gui.addFolder("Triangle");
+
+triangleFolder.add(triangle.position, "x").min(-3).max(3).step(0.01);
+triangleFolder.add(triangle.position, "y").min(-3).max(3).step(0.01);
+triangleFolder.add(triangle.position, "z").min(-3).max(3).step(0.01);
+triangleFolder.addColor(triangleMaterial, "color");
+
+gui.addColor(material, "color");
 
 // Animation loop
 let time = performance.now();
