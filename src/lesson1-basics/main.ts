@@ -17,15 +17,49 @@ const renderer = createRenderer();
 document.body.appendChild(renderer.domElement);
 
 // Create a cube
-const doorTextureImage = new Image();
-doorTextureImage.src = "/doorwood/Door_Wood_001_basecolor.jpg";
-const doorTexture = new THREE.Texture(doorTextureImage);
-doorTexture.colorSpace = THREE.SRGBColorSpace;
-doorTexture.needsUpdate = true;
+// load texture
+// const doorTextureImage = new Image();
+// doorTextureImage.src = "/doorwood/Door_Wood_001_basecolor.jpg";
+// const doorTexture = new THREE.Texture(doorTextureImage);
+// doorTexture.colorSpace = THREE.SRGBColorSpace;
+// doorTexture.needsUpdate = true;
+
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onLoad = () => {
+  console.log("loadingManager.onLoad");
+};
+loadingManager.onProgress = () => {
+  console.log("loadingManager.onProgress");
+};
+loadingManager.onError = () => {
+  console.log("loadingManager.onError");
+};
+const textureLoader = new THREE.TextureLoader(loadingManager);
+const doorColorTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_basecolor.jpg"
+);
+const doorAlphaTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_alpha.jpg"
+);
+const doorHeightTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_height.png"
+);
+const doorNormalTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_normal.jpg"
+);
+const doorAmbientOcclusionTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_ambientOcclusion.jpg"
+);
+const doorMetalnessTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_metallic.jpg"
+);
+const doorRoughnessTexture = textureLoader.load(
+  "/doorwood/Door_Wood_001_roughness.jpg"
+);
 
 const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
 const material = new THREE.MeshBasicMaterial({
-  map: doorTexture,
+  map: doorColorTexture,
   // color: 0x00ff00,
   // wireframe: true,
 });
