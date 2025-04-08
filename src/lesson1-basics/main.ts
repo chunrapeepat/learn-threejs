@@ -17,10 +17,17 @@ const renderer = createRenderer();
 document.body.appendChild(renderer.domElement);
 
 // Create a cube
+const doorTextureImage = new Image();
+doorTextureImage.src = "/doorwood/Door_Wood_001_basecolor.jpg";
+const doorTexture = new THREE.Texture(doorTextureImage);
+doorTexture.colorSpace = THREE.SRGBColorSpace;
+doorTexture.needsUpdate = true;
+
 const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
 const material = new THREE.MeshBasicMaterial({
-  color: 0x00ff00,
-  wireframe: true,
+  map: doorTexture,
+  // color: 0x00ff00,
+  // wireframe: true,
 });
 const cube = new THREE.Mesh(geometry, material);
 cube.position.x = -1;
