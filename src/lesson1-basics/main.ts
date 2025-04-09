@@ -38,6 +38,7 @@ const textureLoader = new THREE.TextureLoader(loadingManager);
 const doorColorTexture = textureLoader.load(
   "/doorwood/Door_Wood_001_basecolor.jpg"
 );
+doorColorTexture.minFilter = THREE.NearestFilter;
 const doorAlphaTexture = textureLoader.load(
   "/doorwood/Door_Wood_001_alpha.jpg"
 );
@@ -117,8 +118,8 @@ function animate(): void {
 
   // alternative: clock.elapsedTime
 
-  cube.rotation.x += deltaTime * 0.001;
-  cube.rotation.y += deltaTime * 0.001;
+  // cube.rotation.x += deltaTime * 0.001;
+  // cube.rotation.y += deltaTime * 0.001;
   renderer.render(scene, camera);
 }
 
