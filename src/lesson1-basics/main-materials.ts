@@ -16,8 +16,29 @@ const camera = createCamera();
 const renderer = createRenderer();
 document.body.appendChild(renderer.domElement);
 
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader();
+
+const doorColorTexture = textureLoader.load("/textures/door/color.jpg");
+doorColorTexture.colorSpace = THREE.SRGBColorSpace;
+const doorAlphaTexture = textureLoader.load("/textures/door/alpha.jpg");
+const doorAmbientOcclusionTexture = textureLoader.load(
+  "/textures/door/ambientOcclusion.jpg"
+);
+const doorHeightTexture = textureLoader.load("/textures/door/height.jpg");
+const doorNormalTexture = textureLoader.load("/textures/door/normal.jpg");
+const doorMetalnessTexture = textureLoader.load("/textures/door/metalness.jpg");
+const doorRoughnessTexture = textureLoader.load("/textures/door/roughness.jpg");
+// const matcapTexture = textureLoader.load("/textures/matcaps/1.png");
+const gradientTexture = textureLoader.load("/textures/gradients/3.jpg");
+
 // materials
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshBasicMaterial({
+  map: doorColorTexture,
+  color: 0x00ff00,
+});
 
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), material);
 sphere.position.x = -1.5;
