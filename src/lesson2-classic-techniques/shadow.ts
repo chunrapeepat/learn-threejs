@@ -50,6 +50,8 @@ scene.add(planeMesh);
 
 const pointLight = new THREE.PointLight(0xffffff, 10);
 pointLight.castShadow = true;
+pointLight.shadow.mapSize.width = 1024;
+pointLight.shadow.mapSize.height = 1024;
 pointLight.position.x = 1;
 pointLight.position.y = 1;
 pointLight.position.z = 5;
